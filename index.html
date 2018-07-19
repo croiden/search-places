@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Search Places</title>
+  <meta name="description" content="This page is used to search the places">
+  <meta name="author" content="Lawrence Croiden Lobo">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div class="mask" style="display:none;">
+		<div>Processing your request. Please wait...</div>
+	</div>
+	<div class="page-error" style="display:none;">Error occurred while processing the request.</div>
+	<div class="container">
+		<div class="header">
+			<input type="search" name="placeSearch" placeholder="Search Places">
+			<button class="my-fav" disabled ><span>0</span> Favourite(s)</button>
+		</div>
+		<div class="content">
+			<div class="empty-message" style="display:none;"></div>
+			<ul></ul>
+		</div>
+		<div class="footer">
+			<button class="previous" disabled >Previous</button>
+			<button class="next" disabled >Next</button>
+		</div>
+	</div>
+	<script src="js/scripts.js"></script>
+</body>
+</html>
