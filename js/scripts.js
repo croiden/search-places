@@ -3,6 +3,10 @@
 	var searchPlace = {
 		accessToken: "674884599526434|1v_qUeyO_C3UX4XwU-k7vU-i7mk",
 		baseUrl: "https://graph.facebook.com",
+		/**
+		 * @desc This method is invoked onload of the page to add event listeners to search input and buttons.
+		 * @method onLoad
+		 */
 		onLoad: function () {
 			var self = this;
 			var favPlaces = [];
@@ -25,6 +29,10 @@
 			}
 			self.addButtonEvents();
 		},
+		/**
+		 * @desc This method is used to get the search matched places.
+		 * @method getPlaces
+		 */
 		getPlaces: function (searchVal) {
 			var self = this;
 			var placesUrl = `${self.baseUrl}/search?type=place&fields=name&q=${searchVal}&access_token=${self.accessToken}`;
@@ -32,6 +40,10 @@
 				self.renderPlaces(JSON.parse(resp), searchVal);
 			});
 		},
+		/**
+		 * @desc This method is used to get the additional details for specific place.
+		 * @method getPlace
+		 */
 		getPlace: function (placeId) {
 			var self = this;
 			var placeUrl = `${self.baseUrl}/v3.0/${placeId}?fields=phone,website,about,single_line_address&access_token=${self.accessToken}`;
@@ -39,6 +51,10 @@
 				self.renderMoreDetails(JSON.parse(resp), placeId);
 			});
 		},
+		/**
+		 * @desc This method is used to make the http get request.
+		 * @method makeHttpRequest
+		 */
 		makeHttpRequest: function (url, callback) {
 			var self = this;
 			self.showMask();
@@ -59,6 +75,10 @@
 			xmlHttp.open("GET", url, true);
 			xmlHttp.send(null);
 		},
+		/**
+		 * @desc This method is used render all the search matched places.
+		 * @method renderPlaces
+		 */
 		renderPlaces: function (response, searchVal) {
 			var self = this;
 			delete self.next;
@@ -93,6 +113,10 @@
 			self.next?self.toggleNxtBtn(false): self.toggleNxtBtn(true);
 			self.previous?self.togglePrvBtn(false): self.togglePrvBtn(true);
 		},
+		/**
+		 * @desc This method is used render only the favourite places.
+		 * @method renderFavPlaces
+		 */
 		renderFavPlaces: function(places){
 			var self = this;
 			self.resources = {};
@@ -110,6 +134,10 @@
 			ul.innerHTML = placesEl;
 			document.querySelector('.footer').style.display = "none";
 		},
+		/**
+		 * @desc This method is used to get the template for place.
+		 * @method getTemplate
+		 */
 		getTemplate: function(place){
 			return `<li>
 						<div class="place-row">
@@ -130,6 +158,10 @@
 			document.querySelector('div.page-error').style.display = "none";
 			document.querySelector('.footer').style.display = "block";
 		},
+		/**
+		 * @desc This method is used to capture the checkbox change event and update favourite places.
+		 * @method checkboxChange
+		 */
 		checkboxChange: function(e){
 			var self = this;
 			var favPlaces = self.getFavPlaces();
@@ -148,6 +180,10 @@
 			var self = this;
 			self.getPlace(e.getAttribute("data-id"));
 		},
+		/**
+		 * @desc This method is used to render more details about the place.
+		 * @method renderMoreDetails
+		 */
 		renderMoreDetails: function (moreDetails, placeId) {
 			var moreDetOfPlace = '';
 			var placeRow = document.getElementById('#more-det-' + placeId);
