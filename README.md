@@ -2,7 +2,7 @@
 
 This project is used to search different places using the Facebook public API.
 
-Note:
+How to use:
 
 1. Make use of the search input box to look for different places. 
 2. To favourite any place click on the heart icon, click again to unfavourite the place.
@@ -12,7 +12,7 @@ Note:
 
 Not Implemented:
 
-1. Sorting search results is not implemented: The API is returning the paginated data and there is no use of applying sorting on paginated data.
+1. Sorting search results: The API is returning the paginated data and there is no use of applying sorting on paginated data.
 
 Known Limitations:
 
